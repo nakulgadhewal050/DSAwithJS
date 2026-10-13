@@ -132,10 +132,41 @@
   /**fabonacci */
 }
 
-function fabonacci(n) {
-  if (n === 0) return 0;
-  if (n === 1) return 1;
+// function fabonacci(n) {
+//   if (n === 0) return 0;
+//   if (n === 1) return 1;
 
-  return fabonacci(n - 1) + fabonacci(n - 2);
+//   return fabonacci(n - 1) + fabonacci(n - 2);
+// }
+// console.log(fabonacci(8));
+
+{
+  /**sum digit */
 }
-console.log(fabonacci(8));
+
+// function sum(n) {
+//   if (n === 0) return 0;
+
+//   return (n % 10) + sum(Math.floor(n / 10));
+// }
+// console.log(sum(12345));
+
+{/**iterative method */}
+
+// function sumDigits(n){
+// let sum = 0
+//   while (n>0) {
+//     sum += n%10
+//     n = Math.floor(n/10)
+//   }
+//   return sum
+// }
+// console.log(sumDigits(12345))
+
+{/**power */}
+
+// function power(a,b){
+//   if(b===0) return 1;
+//   return a*power(a,b-1)
+// }
+// console.log(power(2,3))
