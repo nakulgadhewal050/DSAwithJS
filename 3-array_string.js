@@ -121,7 +121,7 @@
 }
 
 // function isAnalog(s, t) {
-  
+
 //   s = s.toLowerCase().replace(/\s+/g, "");
 //   t = t.toLowerCase().replace(/\s+/g, "");
 
@@ -139,15 +139,116 @@
 
 // console.log(isAnalog("silent", "listen"));
 
+// function isAnalog(s, t) {
 
-function isAnalog(s, t) {
-  
-  s = s.toLowerCase().replace(/\s+/g, "");
-  t = t.toLowerCase().replace(/\s+/g, "");
+//   s = s.toLowerCase().replace(/\s+/g, "");
+//   t = t.toLowerCase().replace(/\s+/g, "");
 
-  return s.split("").sort().join("")===t.split("").sort().join("")
+//   return s.split("").sort().join("")===t.split("").sort().join("")
 
+// }
 
+// console.log(isAnalog("silent ", "listen"));
+
+{
+  /**Palindrome */
 }
 
-console.log(isAnalog("silent ", "listen"));
+// function isPalindrome(str) {
+//   str = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+//   let start = 0;
+//   let end = str.length - 1;
+
+//   while (start < end) {
+//     if (str[start] !== str[end]) {
+//       return false;
+//     }
+//     start++;
+//     end--;
+//   }
+//   return true;
+// }
+// console.log(isPalindrome("m@Adam "))
+
+{
+  /**Frequency Character */
+}
+
+// function freq(char){
+//   char = char.toLowerCase().replace(/[^a-z0-9]/g,"")
+//   let frq = {}
+//   for (const ch of char) {
+//     frq[ch] = (frq[ch] || 0) +1;
+//   }
+//   return frq
+// }
+// console.log(freq("bAnana"))
+
+
+//To Pointer
+{
+  /**Remove vowels */
+}
+
+// function remVowel(str) {
+//   let vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]);
+//   str = str.split("")
+//   let left = 0;
+//   let right =0;
+//   while (right<str.length) {
+//      if(!vowels.has(str[right])){
+//       str[left] = str[right]
+//       left++
+//      }
+//      right ++
+//   }
+//   return str.slice(0,left).join("")
+// }
+// console.log(remVowel("Nakul"));
+
+
+{/**Sliding window technique */}
+
+//find max sum of elements
+
+// function max(arr,k){
+//   let windowSum = 0
+//   let maxSum = 0
+
+//   for (let i = 0; i < k; i++) {
+//      windowSum += arr[i] 
+//   }
+//    maxSum = windowSum
+
+//    {/**Sliding window */}
+//   for (let i = k; i < arr.length; i++){
+//         windowSum+=arr[i]
+//         windowSum-=arr[i-k]
+//         maxSum = Math.max(maxSum,windowSum)
+
+//   }
+//   return maxSum  
+
+// }
+// console.log(max([2,1,5,1,3,2],3))
+
+
+{/**find max length */}
+
+function length(s){
+  let set = new Set()
+  let left = 0
+  let maxLen = 0
+  for (let i = 0; i < s.length; i++) {
+    
+    if(set.has(s[i])){
+      set.delete(s[left])
+      left++
+    }
+    set.add(s[i])
+    maxLen = Math.max(maxLen, i-left+1)
+  }
+  return maxLen
+}
+console.log(length("abcabcbb"))
+
