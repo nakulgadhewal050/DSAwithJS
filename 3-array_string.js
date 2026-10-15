@@ -184,7 +184,6 @@
 // }
 // console.log(freq("bAnana"))
 
-
 //To Pointer
 {
   /**Remove vowels */
@@ -206,8 +205,9 @@
 // }
 // console.log(remVowel("Nakul"));
 
-
-{/**Sliding window technique */}
+{
+  /**Sliding window technique */
+}
 
 //find max sum of elements
 
@@ -216,7 +216,7 @@
 //   let maxSum = 0
 
 //   for (let i = 0; i < k; i++) {
-//      windowSum += arr[i] 
+//      windowSum += arr[i]
 //   }
 //    maxSum = windowSum
 
@@ -227,28 +227,43 @@
 //         maxSum = Math.max(maxSum,windowSum)
 
 //   }
-//   return maxSum  
+//   return maxSum
 
 // }
 // console.log(max([2,1,5,1,3,2],3))
 
-
-{/**find max length */}
-
-function length(s){
-  let set = new Set()
-  let left = 0
-  let maxLen = 0
-  for (let i = 0; i < s.length; i++) {
-    
-    if(set.has(s[i])){
-      set.delete(s[left])
-      left++
-    }
-    set.add(s[i])
-    maxLen = Math.max(maxLen, i-left+1)
-  }
-  return maxLen
+{
+  /**find max length */
 }
-console.log(length("abcabcbb"))
 
+// function length(s){
+//   let set = new Set()
+//   let left = 0
+//   let maxLen = 0
+//   for (let i = 0; i < s.length; i++) {
+
+//     if(set.has(s[i])){
+//       set.delete(s[left])
+//       left++
+//     }
+//     set.add(s[i])
+//     maxLen = Math.max(maxLen, i-left+1)
+//   }
+//   return maxLen
+// }
+// console.log(length("abcabcbb"))
+
+{
+  /**Prifix sum */
+}
+
+function Prifix(arr) {
+  let prifix = new Array(arr.length)
+  prifix[0] = arr[0]
+  for (let i = 1; i < arr.length; i++) {
+    prifix[i] = prifix[i-1]+arr[i];
+    
+  }
+  return prifix
+}
+console.log(Prifix([1, 2, 3, 4, 5]));
