@@ -254,16 +254,227 @@
 // console.log(length("abcabcbb"))
 
 {
+  /**Core Data Sructure */
+}
+
+{
   /**Prifix sum */
 }
 
-function Prifix(arr) {
-  let prifix = new Array(arr.length)
-  prifix[0] = arr[0]
-  for (let i = 1; i < arr.length; i++) {
-    prifix[i] = prifix[i-1]+arr[i];
-    
-  }
-  return prifix
+// function Prifix(arr) {
+//   let prifix = new Array(arr.length)
+//   prifix[0] = arr[0]
+//   for (let i = 1; i < arr.length; i++) {
+//     prifix[i] = prifix[i-1]+arr[i];
+
+//   }
+//   return prifix
+// }
+// console.log(Prifix([1, 2, 3, 4, 5]));
+
+{
+  /**stack */
 }
-console.log(Prifix([1, 2, 3, 4, 5]));
+
+// class Stack {
+//   constructor() {
+//     this.item = []
+//   }
+
+//   push(value){
+//     this.item.push(value)
+//   }
+
+//   pop(){
+//     if(this.IsEmpty()){
+//       console.log("stack is empty")
+//       return null
+//     }
+//     return this.item.pop()
+//   }
+
+//   peek(){
+//     if(this.IsEmpty()){
+//       console.log("stack is empty")
+//       return null
+//     }
+//     return this.item[this.item.length-1]
+//   }
+
+//   IsEmpty(){
+//     return this.item.length === 0
+//   }
+
+//   print(){
+//     console.log(this.item)
+//   }
+// }
+// let stack = new Stack()
+
+// stack.push(10)
+// stack.push(20)
+// stack.push(30)
+// stack.push(40)
+// console.log(stack.peek())
+// stack.pop()
+// stack.print()
+
+{
+  /**Valid Parentheses using stack */
+}
+
+// function isValid(s) {
+
+//   let stack = []
+//   let map = {
+//     ")":"(",
+//     "]":"[",
+//     "}":"{"
+//   }
+
+//   for (const ch of s) {
+//     if(ch==='('||ch==='{'||ch==='['){
+//       stack.push(ch);
+//     } else{
+//       if(stack.length===0) return false
+//       let top = stack.pop()
+//       if(top!==map[ch]) return false
+//     }
+//   }
+//   return stack.length === 0
+
+// }
+// console.log(isValid(("(){}[]")));
+
+{
+  /**Next Greater Element */
+}
+
+//brute force approach
+
+// function ele(arr) {
+//   let nextGreater = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     let next = -1;
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] > arr[i]) {
+//         next = arr[j];
+//         break;
+//       }
+//     }
+//     nextGreater.push(next);
+//   }
+//   return nextGreater;
+// }
+// console.log(ele([4, 5, 2, 10, 8]));
+
+{
+  /**Monotonic  */
+}
+
+// function nextGreater(arr) {
+//   let n = arr.length;
+//   let res = new Array(n).fill(-1);
+//   let stack = [];
+
+//   for (let i = n - 1; i >= 0; i--) {
+//     while (stack.length > 0 && stack[stack.length - 1] <= arr[i]) {
+//       stack.pop();
+//     }
+//     if (stack.length > 0) {
+//       res[i] = stack[stack.length - 1];
+//     }
+//     stack.push(arr[i]);
+//   }
+//   return res
+// }
+
+// console.log(nextGreater([4,5,2,10,8]))
+
+{
+  /**CircularQueue */
+}
+
+function CircularQueue(size) {
+  let queue = new Array(size);
+  let front = -1;
+  let rear = -1;
+
+  function isFull() {
+    return (rear + 1) % size === front;
+  }
+
+  function IsEmpty() {
+    return front === -1;
+  }
+
+  function enqueue(val) {
+    if (isFull()) {
+      console.log("queue is full");
+      return;
+    }
+
+    if (IsEmpty()) {
+      front = 0;
+      rear = 0;
+    } else {
+      rear = (rear+1)%size
+    }
+    queue[rear] = val
+  }
+
+  function dequeue(){
+    if(IsEmpty()){
+      console.log("Queue is Empty")
+      return null;
+    }
+    let removed  = queue[front];
+
+    if(front === rear){
+      front  = -1
+      rear  = -1
+    }
+    else {
+      front = (front+1)%size
+    }
+    return removed
+  }
+
+  function peek(){
+    if(IsEmpty()) return null;
+    return queue[front]
+  }
+
+  function print(){
+     if(IsEmpty()){
+      console.log("Queue is Empty")
+      return null;
+    }
+    let result = []
+    let i = front
+
+    while (true) {
+      result.push(queue[i])
+      if(i === rear) break
+
+      i = (i+1)%size
+        
+    }
+    console.log(result)
+  }
+
+  return {enqueue, dequeue, peek, print}
+
+}
+let cq = CircularQueue(5);
+cq.enqueue(10)
+cq.enqueue(20)
+cq.enqueue(30)
+cq.enqueue(40)
+cq.enqueue(50)
+// cq.enqueue(60)
+
+cq.dequeue()
+
+cq.print()
+
